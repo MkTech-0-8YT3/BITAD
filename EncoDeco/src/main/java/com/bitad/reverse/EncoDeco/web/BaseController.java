@@ -1,6 +1,7 @@
 package com.bitad.reverse.EncoDeco.web;
 
 import com.bitad.reverse.EncoDeco.services.EncodingService;
+import com.bitad.reverse.EncoDeco.services.SecretManagementService;
 import com.bitad.reverse.EncoDeco.web.models.EncodeDataRequestModel;
 import com.bitad.reverse.EncoDeco.web.models.EncodingType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BaseController {
     private EncodingService encodingService;
+    private SecretManagementService secretManagementService;
 
     @Autowired
-    public BaseController(EncodingService encodingService) {
+    public BaseController(EncodingService encodingService, SecretManagementService secretManagementService) {
         this.encodingService = encodingService;
+        this.secretManagementService = secretManagementService;
     }
 
     @GetMapping("/test")
@@ -34,5 +37,10 @@ public class BaseController {
         } else {
             return "Invalid data provided!";
         }
+    }
+
+    @GetMapping("/flag")
+    public String getFlag() {
+        return secretManagementService.getEncodedFlag();
     }
 }
