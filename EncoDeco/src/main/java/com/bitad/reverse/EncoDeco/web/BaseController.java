@@ -1,7 +1,6 @@
 package com.bitad.reverse.EncoDeco.web;
 
 import com.bitad.reverse.EncoDeco.services.EncodingService;
-import com.bitad.reverse.EncoDeco.utils.DataEncoder;
 import com.bitad.reverse.EncoDeco.web.models.EncodeDataRequestModel;
 import com.bitad.reverse.EncoDeco.web.models.EncodingType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,7 @@ public class BaseController {
 
     @PostMapping("/encode")
     public String encodeData(@RequestBody EncodeDataRequestModel encodeDataRequestModel) {
-        if(encodeDataRequestModel.isValid()) {
+        if (encodeDataRequestModel.isValid()) {
             EncodingType selectedEncoding = EncodingType.valueOf(encodeDataRequestModel.getEncodingType());
             return encodingService.encodeData(encodeDataRequestModel.getDataToEncode(),
                     selectedEncoding, encodeDataRequestModel.getIterations());
