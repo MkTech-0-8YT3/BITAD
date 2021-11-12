@@ -37,6 +37,8 @@ public class EncodeDataRequestModel {
         for (EncodingType encodingType: EncodingType.values()) {
             availableEncodingTypes.add(encodingType.name());
         }
-        return this.iterations >= 0 && availableEncodingTypes.contains(this.encodingType);
+        return this.iterations >= 0 &&
+                this.iterations <= 10 &&
+                availableEncodingTypes.contains(this.encodingType);
     }
 }

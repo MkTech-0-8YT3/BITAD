@@ -4,6 +4,7 @@ import com.bitad.reverse.EncoDeco.services.EncodingService;
 import com.bitad.reverse.EncoDeco.services.SecretManagementService;
 import com.bitad.reverse.EncoDeco.web.models.EncodeDataRequestModel;
 import com.bitad.reverse.EncoDeco.web.models.EncodingType;
+import com.bitad.reverse.EncoDeco.web.models.SecretKeyRequestModel;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,7 +48,7 @@ public class BaseRestController {
     }
 
     @PostMapping("/unlock")
-    public String getClearFlag(@RequestBody String key) {
-        return secretKey.equals(key) ? secretManagementService.getFlag() : "";
+    public String getClearFlag(@RequestBody SecretKeyRequestModel secretKeyRequestModel) {
+        return secretKey.equals(secretKeyRequestModel.getKey()) ? secretManagementService.getFlag() : "Key not valid!";
     }
 }
