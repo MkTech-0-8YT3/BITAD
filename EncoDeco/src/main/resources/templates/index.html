@@ -23,10 +23,9 @@
             <label for="iterations">Number of iterations (if base64) - max 10</label>
             <input type="number" class="form-control" min="0" max="10" id="iterations" name="iterations">
             <!--<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
-            <button type="button" onclick="encodeData()" class="btn btn-primary">Submit</button>
+            <button type="button" onclick="encodeData()" class="btn btn-primary">Encode Text</button>
         </form>
     </div>
-    <br/>
     <br/>
     <div id="flag-container" class="container">
         <h2>Flag Generator</h2>
@@ -43,9 +42,12 @@
             <button type="button" onclick="unlockFlag()" class="btn btn-primary">Unlock Flag</button>
         </form>
         <br/>
+    </div>
+    <div id="result-container" class="container">
+        <h2>Output</h2>
         <div class="green-border-focus">
-            <label for="encodedFlagText">Flag</label>
-            <textarea class="form-control" id="encodedFlagText" rows="3" readonly></textarea>
+            <label for="outputField">Output</label>
+            <textarea class="form-control" id="outputField" rows="4" readonly></textarea>
         </div>
     </div>
 </body>

@@ -1,21 +1,20 @@
 function encodeData() {
     var formData = parseFormData("#encodingForm");
     $.ajax("/encode", { data: JSON.stringify(formData), contentType: 'application/json', type:'POST'}).then(function (value) {
-        alert(value);
+        document.getElementById("outputField").innerText=value;
     });
 }
 
 function getFlag() {
-    document.getElementById("encodedFlagText").innerText="";
     $.ajax("/flag", { type:'GET'}).then(function (value) {
-        document.getElementById("encodedFlagText").innerText=value;
+        document.getElementById("outputField").innerText=value;
     });
 }
 
 function unlockFlag() {
     var formData = parseFormData("#keyForm");
     $.ajax("/unlock", { data: JSON.stringify(formData), contentType: 'application/json', type:'POST'}).then(function (value) {
-        document.getElementById("encodedFlagText").innerText=value;
+        document.getElementById("outputField").innerText=value;
     });
 }
 

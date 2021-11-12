@@ -10,7 +10,7 @@ void initKeyArray(char *key_buff) {
 		tmpBuffer[i] = (char) (key_chars[i]+5);
 	}
 	tmpBuffer[key_len] = '\0';
-	strlcpy(key_buff, tmpBuffer, key_len +1);
+	strncpy(key_buff, tmpBuffer, key_len +1);
 	if(strlen(key_buff) > key_len) {
 		key_buff[key_len] = '\0';
 	}
