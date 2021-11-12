@@ -10,9 +10,10 @@
 	</parent>
 	<groupId>com.bitad.reverse</groupId>
 	<artifactId>EncoDeco</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>EncoDeco</name>
 	<description>Simple encoder/decoder with RESTful API</description>
+	<packaging>jar</packaging>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -51,7 +52,6 @@
 			<version>1.10.19</version>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>
