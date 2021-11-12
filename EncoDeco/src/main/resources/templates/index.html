@@ -9,23 +9,44 @@
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/utils.js"></script>
 </head>
-<body>
-    <form id="encodingForm" method="post">
-        <div class="form-group">
-            <label for="dataToEncode">Email address</label>
+<body onload="disableKeypressSubmit()">
+    <div id="encoding-container" class="container">
+        <h2>Encode Text</h2>
+        <form id="encodingForm">
+            <label for="dataToEncode">Data to encode</label>
             <input type="text" class="form-control" id="dataToEncode" name="dataToEncode">
+            <label for="encodingTypeSelect">Encoding Type</label>
+            <select class="form-control" id="encodingTypeSelect" name="encodingType">
+                <option>base64</option>
+                <option>ascii_hex</option>
+            </select>
+            <label for="iterations">Number of iterations (if base64) - max 10</label>
+            <input type="number" class="form-control" min="0" max="10" id="iterations" name="iterations">
+            <!--<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
+            <button type="button" onclick="encodeData()" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <br/>
+    <br/>
+    <div id="flag-container" class="container">
+        <h2>Flag Generator</h2>
+        <h4>Generate Flag</h4>
+        <button type="button" onclick="getFlag()" class="btn btn-primary" id="flagGenBtn">Flag Gen</button>
+        <br/>
+        <label for="flagGenBtn">Might take a while</label>
+        <br/>
+        <br/>
+        <h4>Unlock Flag in cleartext</h4>
+        <form id="keyForm">
+            <label for="flagKey">Key</label>
+            <input type="password" class="form-control" id="flagKey" name="key">
+            <button type="button" onclick="unlockFlag()" class="btn btn-primary">Unlock Flag</button>
+        </form>
+        <br/>
+        <div class="green-border-focus">
+            <label for="encodedFlagText">Flag</label>
+            <textarea class="form-control" id="encodedFlagText" rows="3" readonly></textarea>
         </div>
-        <div class="form-group">
-            <label>Encoding Type</label>
-            <input type="radio" class="form-control" name="encodingType" value="base64"> base64
-            <input type="radio" class="form-control" name="encodingType" value="ascii_hex"> ascii_hex
-        </div>
-        <div class="form-group">
-            <label class="form-check-label" for="iterations">Number of iterations (if base64) - max 10</label>
-            <input type="number" max="10" min="0" id="iterations" name="iterations">
-        </div>
-        <!--<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
-        <button type="button" onclick="encodeData()" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 </body>
 </html>
