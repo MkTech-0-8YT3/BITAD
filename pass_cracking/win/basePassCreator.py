@@ -9,5 +9,5 @@ salt = bcrypt.gensalt()
 pass_hash = bcrypt.hashpw(sys.argv[1].encode(), salt)
 
 print("Pass: %s" % sys.argv[1])
-print("Salt: %s" % salt)
-print("Hash: %s" % pass_hash)
+print("Salt: %s" % salt.decode('utf-8'))
+print("Hash: %s" % pass_hash.decode('utf-8'))
